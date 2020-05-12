@@ -1,24 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Word Search Collection View Data Source-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="WordSearchCollectionViewDataSource" customModule="Word_Search" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word Search!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k12-ML-ceG">
+                                <rect key="frame" x="20" y="74" width="374" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QZy-RU-QCB" userLabel="Word Search Collection View">
+                                <rect key="frame" x="20" y="168" width="374" height="454"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="qTZ-MC-NMK">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="wordSearchCell" id="vX5-ti-V4F" userLabel="Word Search Letter Cell" customClass="WordSearchCollectionViewCell" customModule="Word_Search" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="I6W-6k-65K">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cid-rb-9G3">
+                                                    <rect key="frame" x="19" y="14.999999999999998" width="12" height="20.333333333333329"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="cid-rb-9G3" firstAttribute="centerY" secondItem="I6W-6k-65K" secondAttribute="centerY" id="arG-1U-mAg"/>
+                                                <constraint firstItem="cid-rb-9G3" firstAttribute="centerX" secondItem="I6W-6k-65K" secondAttribute="centerX" id="wQ7-VU-8Sc"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                        <connections>
+                                            <outlet property="letterLabel" destination="cid-rb-9G3" id="tRY-jw-2gS"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="nS1-0J-N0C"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="JG2-Id-qM6"/>
+                                </connections>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word Bank:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="laK-69-YI6">
+                                <rect key="frame" x="20" y="765.33333333333337" width="374" height="26.333333333333371"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6EE-q9-Eqj">
+                                <rect key="frame" x="20" y="690.33333333333337" width="374" height="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Submit Word">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSubmitButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1vb-nn-pOb"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swift, Kotlin, ObjectiveC, Variable, Java, Mobile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFp-DV-HmR">
+                                <rect key="frame" x="5" y="811.66666666666663" width="404" height="20.333333333333371"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Found: 0/6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1c-qY-gUU">
+                                <rect key="frame" x="20" y="112" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Word: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xLU-gK-LKQ">
+                                <rect key="frame" x="20" y="661" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="laK-69-YI6" secondAttribute="trailing" constant="20" id="2ub-dd-6o6"/>
+                            <constraint firstItem="6EE-q9-Eqj" firstAttribute="top" secondItem="xLU-gK-LKQ" secondAttribute="bottom" constant="8.3300000000000001" id="4ID-xz-Zd0"/>
+                            <constraint firstItem="laK-69-YI6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GL6-nA-RIZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="K1c-qY-gUU" secondAttribute="trailing" constant="20" id="J5Y-P6-ao4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xLU-gK-LKQ" secondAttribute="trailing" constant="20" id="Lx5-VB-EjI"/>
+                            <constraint firstItem="K1c-qY-gUU" firstAttribute="top" secondItem="k12-ML-ceG" secondAttribute="bottom" constant="8" id="OaF-wZ-VKP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="k12-ML-ceG" secondAttribute="trailing" constant="20" id="Of2-Vc-U71"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="TFp-DV-HmR" secondAttribute="bottom" constant="30" id="WlV-u5-hZR"/>
+                            <constraint firstItem="k12-ML-ceG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Z6D-KW-OVh"/>
+                            <constraint firstItem="TFp-DV-HmR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZfH-FB-otA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6EE-q9-Eqj" secondAttribute="trailing" constant="20" id="g58-Su-kOt"/>
+                            <constraint firstItem="xLU-gK-LKQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gcH-RL-qPM"/>
+                            <constraint firstItem="xLU-gK-LKQ" firstAttribute="top" secondItem="QZy-RU-QCB" secondAttribute="bottom" constant="39" id="jlg-WH-yYM"/>
+                            <constraint firstItem="k12-ML-ceG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="luq-7h-d4T"/>
+                            <constraint firstItem="K1c-qY-gUU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="n9D-R0-led"/>
+                            <constraint firstItem="laK-69-YI6" firstAttribute="top" secondItem="6EE-q9-Eqj" secondAttribute="bottom" constant="40" id="oYv-5J-qOb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QZy-RU-QCB" secondAttribute="trailing" constant="20" id="qwD-ha-enV"/>
+                            <constraint firstItem="QZy-RU-QCB" firstAttribute="top" secondItem="K1c-qY-gUU" secondAttribute="bottom" constant="35" id="rSq-kn-7Cb"/>
+                            <constraint firstItem="6EE-q9-Eqj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vYB-IY-hKC"/>
+                            <constraint firstItem="QZy-RU-QCB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vhF-qB-Zi7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TFp-DV-HmR" secondAttribute="trailing" constant="5" id="y4s-rK-MKC"/>
+                            <constraint firstItem="TFp-DV-HmR" firstAttribute="top" secondItem="laK-69-YI6" secondAttribute="bottom" constant="20" id="z4E-6D-fm7"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="QZy-RU-QCB" id="vus-BD-xDa"/>
+                        <outlet property="selectedWordLabel" destination="xLU-gK-LKQ" id="GxG-u8-jXj"/>
+                        <outlet property="submitButton" destination="6EE-q9-Eqj" id="dS7-P0-xM4"/>
+                        <outlet property="wordBankLabel" destination="TFp-DV-HmR" id="gWA-tv-oJ1"/>
+                        <outlet property="wordBankTitle" destination="laK-69-YI6" id="mR2-JY-Mty"/>
+                        <outlet property="wordsFoundLabel" destination="K1c-qY-gUU" id="aJj-GY-leg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="117.85714285714285"/>
         </scene>
     </scenes>
 </document>
